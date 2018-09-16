@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col">
+    <div class="btn-group" role="group">
+      <form action="{% if isCompleted %} {% url 'todos' %} {% else %} {% url 'completed' %} {% endif %}" method="get">
+        <button type="submit" class="btn btn-warning" style="margin-right: 10px;">
+          View {% if isCompleted %} incomplete {% else %} completed {% endif %} tasks
+        </button>
+      </form>
+      <form action="{% url 'deletelist' %}" method="post">
+        {% csrf_token %}
+        <input name="isCompleted" type="hidden" value="{{ isCompleted }}">
+        <button type="submit" class="btn btn-danger">Delete this list</button>
+      </form>
+    </div>
+  </div>
+</div>

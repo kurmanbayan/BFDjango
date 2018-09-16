@@ -1,0 +1,19 @@
+<table class="table">
+  <thead>
+    <tr>
+      <td>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" style="margin-bottom: 10px;" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Add Task
+        </button>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body col-md-8">
+            {% include 'add.html' %}
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td> <font size="20"> {{ title }} </font> </td>
+    </tr>
+  </thead>
+</table>

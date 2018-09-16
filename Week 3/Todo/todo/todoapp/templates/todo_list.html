@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block todos %}
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Task</th>
+        <th scope="col">Created</th>
+        <th scope="col">Due on</th>
+        <th scope="col">Owner</th>
+        <th scope="col">Mark</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for todo in todos %}
+        <tr>
+          <th> <a href="#"> {{ todo.todo }} </a> </th>
+          <td> {{ todo.createdAt }} </td>
+          <td> {{ todo.dueTo }} </td>
+          <td> {{ todo.owner }} </td>
+          <td>
+          <form action="{% url 'mark' todo.id %}" method="post">
+            {% csrf_token %}
+            <input name="isCompleted" type="hidden" value="{{ isCompleted }}">
+            <button type="submit" class="btn btn-info">
+              {% if isCompleted %} Not {% endif %} Done
+            </button>
+          </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock todos %}

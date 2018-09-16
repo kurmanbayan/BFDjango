@@ -1,0 +1,20 @@
+<form action="{% url 'add' %}" method="post">
+  {% csrf_token %}
+  <div class="container">
+    <div class="row" style="margin-bottom: 10px;">
+      <div class="col-md-8">
+        <input type="text" name="task" class="form-control" placeholder="Add new task">
+      </div>
+    </div>
+    <div class="row" style="margin-bottom: 10px;">
+      <div class="col-md-8">
+        <input type="date" name="date" class="form-control">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <button type="submit" class="btn btn-danger">Add</button>
+      </div>
+    </div>
+  </div>
+</form>
