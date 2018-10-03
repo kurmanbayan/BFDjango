@@ -13,3 +13,9 @@ def comments(request, id):
         "comments": comments
     }
     return render(request, 'blog_list.html', context)
+
+def addBlog(request):
+    title = request.POST['title']
+    body = request.POST['body']
+    Blog.objects.create(title=title, body=body)
+    return redirect('/api/v1/blog/')
