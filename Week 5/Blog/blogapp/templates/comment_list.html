@@ -2,7 +2,20 @@
   <h3> Comments </h3>
   <ul class="list-group list-group-flush">
     {% for comment in comments %}
-      <li class="list-group-item"> {{ comment.comment }} </li>
+      <li class="list-group-item">
+        <div class=row>
+          {{ comment.comment }}
+        </div>
+        <div class="row font-italic">
+          {{ comment.author }}
+        </div>
+        <div class="row font-italic">
+          {{ comment.user.username }}
+        </div>
+        <div class="row font-italic">
+          {{ comment.created_at }}
+        </div>
+      </li>
     {% endfor %}
     <form action="{% url 'addcomment' id %}" method="post">
       {% csrf_token %}

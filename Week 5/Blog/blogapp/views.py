@@ -19,11 +19,17 @@ def addBlog(request):
     if request.method == 'POST':
         title = request.POST['title']
         body = request.POST['body']
-        Blog.objects.create(title=title, body=body)
+        if request.user.is_authenticated:
+            Blog.objects.create(title=title, body=body, user=request.user)
+        else:
+            Blog.objects.create(title=title, body=body)
     return redirect('blog')
 
 def addComment(request, id):
     if request.method == 'POST':
         blog = Blog.objects.get(id=id)
-        Comment.objects.create(comment=request.POST['comment'], blog_fk=blog)
+        if request.user.is_authenticated:
+            Comment.objects.create(comment=request.POST['comment'], blog_fk=blog, user=request.user)
+        else:
+            Comment.objects.create(comment=request.POST['comment'], blog_fk=blog)
     return redirect('comments', id)

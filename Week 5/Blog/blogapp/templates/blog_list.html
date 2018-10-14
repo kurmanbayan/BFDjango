@@ -7,6 +7,8 @@
         <h5 class="card-header"> {{ blog.title }} </h5>
         <div class="card-body">
           <p class="card-text"> {{ blog.body }} </p>
+          <p class="card-text font-italic"> {{ blog.user.username }} </p>
+          <p class="card-text font-italic"> {{ blog.created_at }} </p>
             {% if comments == null %}
               <a href="{% url 'comments' blog.id %}" class="btn btn-primary"> Comment </a>
             {% endif %}
