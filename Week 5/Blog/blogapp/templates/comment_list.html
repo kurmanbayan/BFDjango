@@ -4,5 +4,10 @@
     {% for comment in comments %}
       <li class="list-group-item"> {{ comment.comment }} </li>
     {% endfor %}
+    <form action="{% url 'addcomment' id %}" method="post">
+      {% csrf_token %}
+      <textarea class="form-control" name="comment"></textarea>
+      <input style="margin-top:10px;" class="btn btn-primary" type="submit" value="Compose"/>
+    </form>
   </ul>
 </div>
